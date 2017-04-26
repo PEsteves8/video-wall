@@ -1,0 +1,9 @@
+<ng-container *ngIf="videos?.length > 0">
+  <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" (scrolled)="loadMoreVideos()" [@fadeInOut100ms]>
+    <masonry [options]="{ fitWidth: true, gutter: 5 }" class="mx-auto">
+      <masonry-brick class="card video-brick grid-item text-center" *ngFor="let video of videos; let i = index">
+    <video-card *ngIf="i < 24" [video]="video"></video-card>
+      </masonry-brick>
+    </masonry>
+  </div>
+</ng-container>

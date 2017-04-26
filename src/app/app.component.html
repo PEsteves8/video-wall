@@ -1,0 +1,24 @@
+<header>
+    <navbar></navbar>
+</header>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mt-1">
+                <a class="text-white" href="http://www.github.com/PEsteves8"><i class="fa fa-github"></i></a>
+            </div>
+            <div class="col-6">
+                <p class="text-white float-right get-signed-in-as"><span style="font-size:10px">{{getSignedInAs()}}</span></p>
+            </div>
+        </div>
+    </div>
+</footer>

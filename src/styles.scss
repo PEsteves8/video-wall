@@ -1,0 +1,44 @@
+/* These allow the footer to be properly displayed */
+$footer-margin: 30px;
+$theme-color: steelblue;
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: $footer-margin;
+    
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+nav { 
+    background-color: $theme-color;
+}
+
+
+ .footer {
+    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $footer-margin;
+    background-color: $theme-color;
+}
+
+.star {
+      font-size: 1.5rem;
+      color: #b0c4de;
+    }
+
+.star-fill {
+    color: #fca50f;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

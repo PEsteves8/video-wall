@@ -1,0 +1,14 @@
+<div class="card-block">
+    <h6 class="card-title text-center"><a [routerLink]="['../video']" [queryParams]="{key: video.$key}">{{video.name}}</a></h6>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe [src]="video.url | safe" allowfullscreen></iframe>
+    </div>
+    <ngb-rating [rate]="getAverageRating(video.ratings)" max="5" (rateChange)="rateVideo($event, video.ratings, video.$key)">
+        <ng-template let-fill="fill">
+            <span class="star" [class.star-fill]="fill === 100">&#9733;</span>
+        </ng-template>
+    </ngb-rating>
+    <p class="card-text">{{ truncateDescription ? (video.description | limitTo : 50) : video.description }}</p>
+</div>
+
+
