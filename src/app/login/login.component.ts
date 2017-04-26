@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     //Model for the login form
     data: {email: string, password: string} = {
-        email: 'test@videoportalapp.com',
+        email: 'test@videowall3000.com',
         password: 'password'
     }
 
