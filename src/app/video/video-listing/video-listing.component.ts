@@ -27,7 +27,7 @@ export class VideoListingComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
     private sanitizer: DomSanitizer
 
-  ) {  }
+  ) { }
 
   /**
    * The currentStartAt from used to set the interval of the videos to be fetched (if the offset is 10 the list will be between 0 and 10)
@@ -40,13 +40,31 @@ export class VideoListingComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.videoListSubscription = this.videoService.videoListObservable.subscribe(value => {
-
       // Add extra videos to the current list
       if (!this.videoService.disableUpdates) {
         this.videos = [...this.videos, ...value];
       }
     }, error => this.toastsManager.error(error));
 
+    // To make sure that scrolling is possible, after first trigger, load more until window is full 
+    // Similar to google images
+    // For larger lists a limit would be set with a "load more button"
+    this.videoService.videoListObservable.first().subscribe(() => {
+      let timeout;
+      let bodyEl = document.querySelector('body');
+
+      let checkDocumentHeight = () => {
+        if (bodyEl.clientHeight < window.innerHeight + 100) {
+          this.loadMoreVideos();
+          timeout = setTimeout(checkDocumentHeight, 1000);
+        } else {
+          clearInterval(timeout);
+        }
+      }
+      checkDocumentHeight();
+    });
+
+    // Trigger first fetch
     this.videoService.stepSubject.next(this.currentStartAt);
 
   }
