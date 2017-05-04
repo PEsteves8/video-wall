@@ -1,5 +1,6 @@
 <ng-container *ngIf="videos?.length > 0">
   <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" (scrolled)="loadMoreVideos()" [@fadeInOut100ms]>
+    <div class="ml-3 mb-3" *ngIf="showTip"><i class="fa fa-info-circle text-primary mr-1"></i>Click on a video title to navigate to the video detail page.<strong class="ml-1 text-primary cursor-pointer" (click)="showTip = false; videoService.showTip = false">Got it!</strong></div>
     <masonry [options]="{ fitWidth: true, gutter: 5 }" class="mx-auto">
       <masonry-brick class="card video-brick grid-item text-center" *ngFor="let video of videos; let i = index">
     <video-card [video]="video"></video-card>

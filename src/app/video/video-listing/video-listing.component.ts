@@ -33,8 +33,18 @@ export class VideoListingComponent implements OnInit, OnDestroy {
    * The currentStartAt from used to set the interval of the videos to be fetched (if the offset is 10 the list will be between 0 and 10)
    */
   currentStartAt: number = 0;
+  
+  // Displays the tip
+  showTip: boolean = this.videoService.showTip;
+
+  /**
+   * The array of video objects that is displayed on screen
+   */
   videos: Array<Video> = [];
 
+  /**
+   * The active subscription that updates the videos when a scroll event gets triggered
+   */
   videoListSubscription: Subscription;
 
   ngOnInit() {

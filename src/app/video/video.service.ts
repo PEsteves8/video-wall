@@ -30,6 +30,9 @@ export class VideoService {
         });
     }
 
+    // Indicates if the tip on the video listings component should be shown
+    showTip: boolean = true;
+
     stepSubject = new Subject();
 
     // Keeps a reference to the list observable which is shared amongst components for rating logic
